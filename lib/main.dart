@@ -18,9 +18,9 @@ class HomeworkTest extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         textTheme: TextTheme(
-          bodyLarge: TextStyle(fontSize: 20.0),
-          bodyMedium: TextStyle(fontSize: 18.0),
-          bodySmall: TextStyle(fontSize: 16.0),
+          bodyLarge: TextStyle(fontSize: 22.0),
+          bodyMedium: TextStyle(fontSize: 20.0),
+          bodySmall: TextStyle(fontSize: 18.0),
         ),
       ),
       home: const TabBarBottom(),
