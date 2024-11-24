@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../app_config.dart';
 import '../models/shopping_product.dart';
 import '../services/api_service.dart';
+import '../widgets/loading_bar.dart';
 import '../widgets/product_view.dart';
 import '../widgets/title_bar.dart';
 
@@ -96,27 +97,7 @@ class _LatestProductState extends State<LatestProduct> {
             ],
           ),
         ),
-        (loading == true
-            ? SizedBox(
-                height: AppConfig.loadingBarHeight,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 33,
-                      height: 33,
-                      child: CircularProgressIndicator(),
-                    ),
-                    Text(
-                      '   Loading..',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            : SizedBox.shrink()),
+        (loading == true ? LoadingBar() : SizedBox.shrink()),
       ],
     );
   }
