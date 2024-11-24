@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:homework_test/app_config.dart';
 
 import './shopping.dart';
 import './cart.dart';
@@ -25,25 +26,28 @@ class _TabBarBottomState extends State<TabBarBottom> {
         Shopping(),
         Cart(),
       ][currentPageIndex],
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        indicatorColor: Color(0xFFE8DEF8),
-        selectedIndex: currentPageIndex,
-        destinations: const <Widget>[
-          NavigationDestination(
-            selectedIcon: Icon(Icons.stars),
-            icon: Icon(Icons.stars),
-            label: 'Shopping',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.stars_outlined),
-            label: 'Cart',
-          ),
-        ],
+      bottomNavigationBar: SizedBox(
+        height: AppConfig.bottomBarHeight,
+        child: NavigationBar(
+          onDestinationSelected: (int index) {
+            setState(() {
+              currentPageIndex = index;
+            });
+          },
+          indicatorColor: Color(0xFFE8DEF8),
+          selectedIndex: currentPageIndex,
+          destinations: const <Widget>[
+            NavigationDestination(
+              selectedIcon: Icon(Icons.stars),
+              icon: Icon(Icons.stars),
+              label: 'Shopping',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.stars_outlined),
+              label: 'Cart',
+            ),
+          ],
+        ),
       ),
     );
   }
