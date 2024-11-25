@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:homework_test/app_config.dart';
 
-import './shopping.dart';
-import './cart.dart';
+import '../screens/shopping.dart';
+import '../screens/cart.dart';
 
 class TabBarBottom extends StatefulWidget {
   const TabBarBottom({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homework_test/screens/tab_bar_bottom.dart';
+import 'package:homework_test/widgets/tab_bar_bottom.dart';
 
 void main() {
   runApp(const HomeworkTest());
