@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:homework_test/app_config.dart';
+import 'package:provider/provider.dart';
 
+import '../models/product_cart.dart';
 import '../screens/shopping.dart';
 import '../screens/cart.dart';
 
@@ -21,6 +23,8 @@ class _TabBarBottomState extends State<TabBarBottom> {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<ProductCart>(context, listen: true);
+
     return Scaffold(
       body: <Widget>[
         Shopping(),
@@ -36,15 +40,16 @@ class _TabBarBottomState extends State<TabBarBottom> {
           },
           indicatorColor: Color(0xFFE8DEF8),
           selectedIndex: currentPageIndex,
-          destinations: const <Widget>[
-            NavigationDestination(
+          destinations: <Widget>[
+            const NavigationDestination(
               selectedIcon: Icon(Icons.stars),
               icon: Icon(Icons.stars),
               label: 'Shopping',
             ),
             NavigationDestination(
-              icon: Icon(Icons.stars_outlined),
-              label: 'Cart',
+              icon: const Icon(Icons.stars_outlined),
+              label:
+                  'Cart' + (cart.getAmount == 0 ? '' : ' (${cart.getAmount})'),
             ),
           ],
         ),

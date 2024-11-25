@@ -5,6 +5,7 @@ import 'package:homework_test/models/product.dart';
 class ProductCart extends ChangeNotifier {
   final String _boxName = 'cartBox';
   List<Product> _products = [];
+  int _amount = 0;
 
   Future<Box<Product>> get _box async => await Hive.openBox<Product>(_boxName);
 
@@ -21,6 +22,15 @@ class ProductCart extends ChangeNotifier {
     return _products[index];
   }
 
+  List<Product> get getCartProducts {
+    return _products;
+  }
+
+  // return amount of items in cart
+  int get getAmount {
+    return _amount;
+  }
+
   // Product count
   // return a length of product array
   int get productCount {
@@ -33,6 +43,7 @@ class ProductCart extends ChangeNotifier {
     await box.add(productObj);
 
     _products = box.values.toList();
+    _amount += productObj.amount;
     notifyListeners();
   }
 
@@ -42,6 +53,7 @@ class ProductCart extends ChangeNotifier {
     await box.deleteAt(index);
 
     _products = box.values.toList();
+    updateAmount();
     notifyListeners();
   }
 
@@ -51,6 +63,15 @@ class ProductCart extends ChangeNotifier {
     await box.putAt(index, productObj);
 
     _products = box.values.toList();
+    updateAmount();
     notifyListeners();
+  }
+
+  void updateAmount() {
+    _amount = 0;
+
+    for (var product in _products) {
+      _amount += product.amount;
+    }
   }
 }
