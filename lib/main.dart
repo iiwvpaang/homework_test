@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:homework_test/widgets/tab_bar_bottom.dart';
+
+import 'models/product_cart.dart';
 
 void main() {
   runApp(const HomeworkTest());
@@ -23,7 +26,14 @@ class HomeworkTest extends StatelessWidget {
           bodySmall: TextStyle(fontSize: 18.0),
         ),
       ),
-      home: const TabBarBottom(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<ProductCart>(
+            create: (_) => ProductCart(),
+          ),
+        ],
+        child: const TabBarBottom(),
+      ),
     );
   }
 }
